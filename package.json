@@ -28,13 +28,14 @@
     "url": "https://github.com/blockchain/my-wallet-v3.git"
   },
   "scripts": {
-    "prepublish": "node_modules/.bin/babel src --presets babel-preset-es2015 --out-dir lib",
+    "prepublish": "npm run snyk-protect; node_modules/.bin/babel src --presets babel-preset-es2015 --out-dir lib",
     "dist": "NODE_ENV=\"prod\" ./node_modules/.bin/webpack",
     "build": "./node_modules/.bin/webpack --progress",
     "build:watch": "./node_modules/.bin/webpack -w",
     "clean": "rm -rf dist/ coverage/ coverage-lcov/",
     "test": "./node_modules/.bin/karma start karma.conf.js",
-    "test:chrome": "./node_modules/.bin/karma start karma.conf.js --browsers ChromeHeadless"
+    "test:chrome": "./node_modules/.bin/karma start karma.conf.js --browsers ChromeHeadless",
+    "snyk-protect": "snyk protect"
   },
   "browser": {
     "ws": "./src/ws-browser.js"
@@ -48,14 +49,14 @@
     "bignumber.js": "^4.0.2",
     "bip39": "2.1.*",
     "bitcoin-coinify-client": "^0.7.5",
-    "bitcoin-sfox-client": "^0.2.1",
+    "bitcoin-sfox-client": "^0.2.2",
     "bitcoin-unocoin-client": "^0.3.6",
     "bitcoincashjs-lib": "https://github.com/bitcoinjs/bitcoinjs-lib#9ac221c80dbc3462d7a2392cec2045ae2b590461",
     "bitcoinjs-lib": "2.1.*",
     "bs58": "2.0.*",
     "core-js": "^2.4.1",
     "es6-promise": "^3.0.2",
-    "ethereumjs-tx": "^1.3.1",
+    "ethereumjs-tx": "^1.3.3",
     "ethereumjs-util": "^5.1.2",
     "ethereumjs-wallet": "^0.6.0",
     "isomorphic-fetch": "^2.2.1",
@@ -64,7 +65,8 @@
     "ramda-lens": "^0.1.2",
     "randombytes": "^2.0.1",
     "unorm": "^1.4.1",
-    "ws": "2.0.*"
+    "ws": "2.0.*",
+    "snyk": "^1.116.2"
   },
   "devDependencies": {
     "babel-cli": "~6.24.0",
@@ -121,5 +123,6 @@
   },
   "engines": {
     "node": "7.5"
-  }
+  },
+  "snyk": true
 }
